@@ -28,33 +28,21 @@ public class PlayerMovement : MonoBehaviour
 
         if(directions != Vector3.zero && !Input.GetKey(KeyCode.LeftShift))
         {
-            walk();
+            animator.SetFloat("Move", 0.5f);
+            moveSpeed = walkSpeed;
         }
         else if (directions != Vector3.zero && Input.GetKey(KeyCode.LeftShift))
         {
-            run();
+            animator.SetFloat("Move", 1f);
+            moveSpeed = runSpeed;
         }
         else if (directions == Vector3.zero )
         {
-            idle();
+            animator.SetFloat("Move", 0.0f);
         }
         directions *= moveSpeed * Time.deltaTime;
         directions = transform.TransformDirection(directions);
         controller.Move(directions);
     }
-    void walk()
-    {
-        animator.SetFloat("Move", 0.5f);
-        moveSpeed = walkSpeed;
-    }
-    void run()
-    {
-        animator.SetFloat("Move", 1f);
-        moveSpeed = runSpeed;
-    }
-    void idle()
-    {
-        animator.SetFloat("Move", 0.0f);
-      
-    }
+    
 }
