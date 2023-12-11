@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
         float moveZ = Input.GetAxis("Vertical");
         directions = new Vector3(0,0, moveZ);
         directions *= moveSpeed*Time.deltaTime;
+        directions = transform.TransformDirection(directions);
         controller.Move(directions);
     }
 }
