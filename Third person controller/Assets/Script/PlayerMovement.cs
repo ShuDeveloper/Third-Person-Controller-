@@ -69,8 +69,10 @@ public class PlayerMovement : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
+                //jump
                 vilocity.y = Mathf.Sqrt(Gravity * jumHeight * -2);
             }
+            
         }
         directions *= moveSpeed * Time.deltaTime;
         directions = transform.TransformDirection(directions);
